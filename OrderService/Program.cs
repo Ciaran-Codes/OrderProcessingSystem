@@ -1,12 +1,15 @@
 using MassTransit;
 using MediatR;
-using OrderService;
+using Microsoft.EntityFrameworkCore;
+using OrderService.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<OrderDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("OrderDb")));
 
 // MediatR
 builder.Services.AddMediatR(typeof(Program));
