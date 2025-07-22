@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Contracts", "Shared.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentService", "PaymentService\PaymentService.csproj", "{A2077066-707A-4EA2-B4B5-2D8E3509CFC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryService", "InventoryService\InventoryService.csproj", "{BC3541B0-8F97-4714-885D-53B4E47CA48D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A2077066-707A-4EA2-B4B5-2D8E3509CFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2077066-707A-4EA2-B4B5-2D8E3509CFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2077066-707A-4EA2-B4B5-2D8E3509CFC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC3541B0-8F97-4714-885D-53B4E47CA48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3541B0-8F97-4714-885D-53B4E47CA48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3541B0-8F97-4714-885D-53B4E47CA48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3541B0-8F97-4714-885D-53B4E47CA48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
