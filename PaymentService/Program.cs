@@ -1,6 +1,5 @@
 using MassTransit;
-using MediatR;
-using OrderService;
+using PaymentService.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,18 +7,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// MediatR
-builder.Services.AddMediatR(typeof(Program));
-
-// MassTransit with RabbitMQ
+// MassTransit Consumer Setup
 builder.Services.AddMassTransit(x =>
 {
+    x.AddConsumer<OrderPlacedEventConsumer>();
+
     x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost", "/", h =>
         {
             h.Username("guest");
             h.Password("guest");
+        });
+
+        cfg.ReceiveEndpoint("payment-service", e =>
+        {
+            e.ConfigureConsumer<OrderPlacedEventConsumer>(context);
         });
     });
 });
@@ -34,5 +37,4 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
