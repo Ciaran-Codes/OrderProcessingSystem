@@ -1,3 +1,10 @@
+![.NET Version](https://img.shields.io/badge/.NET-8.0-blue?logo=dotnet)
+![MassTransit](https://img.shields.io/badge/Messaging-MassTransit-green)
+![RabbitMQ](https://img.shields.io/badge/Broker-RabbitMQ-orange?logo=rabbitmq)
+![PostgreSQL](https://img.shields.io/badge/Database-Postgres-blue?logo=postgresql)
+![License](https://img.shields.io/github/license/Ciaran-Codes/OrderProcessingSystem)
+![Last Commit](https://img.shields.io/github/last-commit/Ciaran-Codes/OrderProcessingSystem)
+
 # OrderProcessingSystem
 
 A modular, event-driven microservices architecture built in .NET 8 using RabbitMQ, MassTransit, and PostgreSQL.
