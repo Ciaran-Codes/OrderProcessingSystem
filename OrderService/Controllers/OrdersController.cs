@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OrderService.Application.Commands;
+using OrderService.Persistence;
 
 namespace OrderService.Controllers;
 
@@ -23,9 +25,27 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetOrder(Guid id)
+    public async Task<IActionResult> GetOrder(Guid id, [FromServices] OrderDbContext dbContext)
     {
-        // Placeholder - we don't have persistence yet
-        return Ok(new { OrderId = id, Status = "Mocked - Not Implemented" });
+        var order = await dbContext.Orders
+            .Include(o => o.Items)
+            .FirstOrDefaultAsync(o => o.Id == id);
+
+        if (order == null)
+            return NotFound();
+
+        return Ok(new
+        {
+            order.Id,
+            order.CustomerId,
+            order.Amount,
+            order.CreatedAt,
+            Items = order.Items.Select(i => new
+            {
+                i.ProductId,
+                i.Quantity,
+                i.UnitPrice
+            })
+        });
     }
 }
